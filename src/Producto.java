@@ -6,16 +6,16 @@ public class Producto {
     String vendedor;
 
 
-    public Producto (String nombreProducto, double costeUnitario, double precioUnitarioVenta, int unidadesVendidas, String vendedor) {
+    public Producto (String nombreProducto, double costeUnitario, double precioUnitarioVenta, int unidadesVendidas /*, String vendedor*/) {
         this.nombreProducto = nombreProducto;
         this.costeUnitario = costeUnitario;
         this.precioUnitarioVenta = precioUnitarioVenta;
         this.unidadesVendidas = unidadesVendidas;
-        this.vendedor = vendedor;
+        //this.vendedor = vendedor;
     }
 
 
-    public void ventaProducto (int cantidad) {
+    public void ventaProducto(int cantidad) {
         unidadesVendidas = unidadesVendidas + cantidad;
     }
 

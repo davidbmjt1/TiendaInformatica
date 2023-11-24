@@ -10,16 +10,14 @@ public class Main {
                 "ordenador",
                 400,
                 800,
-                10,
-                "David"
+                10
         );
 
         Producto impresora = new Producto(
                 "impresora",
                 100,
                 200,
-                3,
-                "María"
+                3
         );
 
 
@@ -27,8 +25,7 @@ public class Main {
                 "monitor",
                 75,
                 150,
-                5,
-                "Jesús"
+                5
         );
 
 
@@ -45,7 +42,7 @@ public class Main {
                 actuacionVendedor("Bill", input);
                 break;
             case "Elon":
-                actuacionVendedor(""Elon", input);
+                actuacionVendedor("Elon", input);
                 break;
             default:
                 System.out.println("Error en la identificación");
@@ -95,14 +92,13 @@ public class Main {
 
     }
 
-    private static void actuacionVendedor(String , Scanner input) {
+    private static void actuacionVendedor(String vendedor, Scanner input) {
 
         String menu = STR."""
-        Bienvenido/a \{detalleProducto.vendedor}
+        Bienvenido/a \{vendedor}
                Operaciones disponibles:
-1 - Información de la cuenta     2 - Retirada de fondos
-3 - Ingresar dinero a la cuenta  4 - Cambiar titular de la cuenta
-               5 - Cambiar número de cuenta
+1 - Crear venta productos     2 - Obtener beneficios o pérdidas actuales
+3 - Vendedor líder            4 - Producto líder
                Cualquier otra tecla para finalizar
                """;
 
@@ -114,24 +110,27 @@ public class Main {
 
             switch (eleccion) {
                 case 1:
-                    System.out.println("Producto");
+                    System.out.println("Producto a vender: ");
+                    //////Producto.ventaProducto(3);
                     break;
                 case 2:
                     // retirada de dinero
                     System.out.println("\n¿Qué cantidad?");
                     double fondosRetirada = input.nextDouble();
-                    cuentaDeAlguien.retirarFondos(fondosRetirada);
+                    //////cuentaDeAlguien.retirarFondos(fondosRetirada);
                     break;
+
+
                 case 3:
                     // ingresar de dinero
                     System.out.println("\n¿Qué cantidad desea ingresar?");
                     double fondosIngreso = input.nextDouble();
-                    cuentaDeAlguien.ingregresarFondos(fondosIngreso);
+                    //////cuentaDeAlguien.ingregresarFondos(fondosIngreso);
                     break;
                 case 4:
                     System.out.println("indique el nombre del nuevo titular de la cuenta.");
                     String nuevoTitular = input.next();
-                    cuentaDeAlguien.nombreTitular = nuevoTitular;
+                    //////cuentaDeAlguien.nombreTitular = nuevoTitular;
                     break;
                 default:
                     System.out.println("Muchas gracias y hasta pronto");
