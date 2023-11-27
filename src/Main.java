@@ -1,96 +1,153 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import static java.lang.StringTemplate.STR;
+//import static java.lang.StringTemplate.STR;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Tienda informática");
+
         Scanner input = new Scanner(System.in);
+        ArrayList<Ventas> ventas = new ArrayList<>();
 
-        Producto ordenador = new Producto(
-                "ordenador",
-                400,
-                800,
-                10
-        );
+        boolean continuar_programa = true;
 
-        Producto impresora = new Producto(
-                "impresora",
-                100,
-                200,
-                3
-        );
+        do {
 
+            String menu = """
+                    1 - Introducir venta
+                    2 - Mostrar todas las ventas
+                    3 - Mostrar beneficio actual
+                    4 - Producto con mayor beneficio
+                                        
+                    6 - Vendedor líder
+                    7 - Producto líder
+                         """;
 
-        Producto monitor = new Producto(
-                "monitor",
-                75,
-                150,
-                5
-        );
-
-
-
-
-        System.out.println("Por favor, indique su nombre (vendedor):");
-        String nombreVendedor = input.next();
-
-        switch (nombreVendedor){
-            case "Juan":
-                actuacionVendedor("Juan", input);
-                break;
-            case "Bill":
-                actuacionVendedor("Bill", input);
-                break;
-            case "Elon":
-                actuacionVendedor("Elon", input);
-                break;
-            default:
-                System.out.println("Error en la identificación");
-        }
-
-        /*
-        cuentaDeJuan.nombreTitular = "Juan Pérez";
-        cuentaDeJuan.numCuenta = "11111";
-        cuentaDeJuan.saldo = 30_000;
-        */
-//        System.out.println(cuentaDeJuan);
-
-
-
-        /*
-        // solución alternativa con while (semáforo)
-        boolean mostrarMenu = true;
-        while (mostrarMenu ) {
             System.out.println(menu);
-            eleccion = input.nextShort();
 
-            switch (eleccion) {
+            int opcion = input.nextInt();
+
+
+            switch (opcion) {
                 case 1:
-                    System.out.println(cuentaDeJuan);
+                    crearVenta(input, ventas);
                     break;
+
+
                 case 2:
-                    // retirada de dinero
-                    System.out.println("\n¿Qué cantidad desea retirar?");
-                    double fondosRetirada = input.nextDouble();
-                    cuentaDeJuan.retirarFondos(fondosRetirada);
+                    for (int i = 0; i < ventas.size(); i++) {
+                        System.out.println(ventas.get(i));
+                    }
                     break;
+
                 case 3:
-                    // ingresar de dinero
-                    System.out.println("\n¿Qué cantidad desea ingresar?");
-                    double fondosIngreso = input.nextDouble();
-                    cuentaDeJuan.ingresarFondos(fondosIngreso);
+                    float total = 0;
+                    for (int i = 0; i < ventas.size(); i++) {
+                        total += ventas.get(i).getBeneficio_venta();
+                    }
+                    System.out.println("Beneficio actual:" + total + "€");
                     break;
+
+
                 default:
-                    System.out.println("Muchas gracias y hasta pronto");
-                    mostrarMenu = false;
+                    System.out.println("Opción no reconocida");
+                    continuar_programa = false;
+
             }
 
+
+            //Ventas venta1 = new Ventas("portátil", 2, 500, 300, "Bill Gates");
+            //Ventas venta2 = new Ventas("monitor", 5, 250, 180, "Elon Musk");
+
+
+            //////ventas.add(venta1);
+            //////ventas.add(venta2);
+
+
+            /*
+            for (int i = 0; i < ventas.size(); i++) {
+                //System.out.println();
+                System.out.println(ventas.get(i)); // + nuestras_ventas.get(i));
+                System.out.println("El beneficio ha sido ");
+
+            }
+*/
+
+            //System.out.println(venta1);
+            //////System.out.println("Beneficio venta #1: " + beneficio_venta1);
+
+
+
+/*
+            System.out.println("Por favor, indique su nombre (vendedor):");
+            String nombreVendedor = input.next();
+
+            switch (nombreVendedor){
+                case "Juan":
+                    actuacionVendedor("Juan", input);
+                    break;
+                case "Bill":
+                    actuacionVendedor("Bill", input);
+                    break;
+                case "Elon":
+                    actuacionVendedor("Elon", input);
+                    break;
+                default:
+                    System.out.println("Error en la identificación");
+            }
+*/
+
+
+        } while (continuar_programa);
+
+    }
+
+
+        public static void crearVenta (Scanner input, ArrayList ventas) {
+            System.out.println("Nombre del producto: ");
+            String nombreProducto = input.next();
+
+            System.out.println("Cantidad de unidades: ");
+            int unidades = input.nextInt();
+
+            System.out.println("Precio venta: ");
+            float precioVenta = input.nextFloat();
+
+            System.out.println("Precio coste: ");
+            float precioCoste = input.nextFloat();
+
+            System.out.println("Vendedor: ");
+            String vendedor = input.next();
+
+            /*
+            for (int i = 0; i < ventas.size() ; i++) {
+                if (ventas.get(i).getNombre_producto() == nombreProducto) {
+                    subtotalBeneficio = ventas.get(i).get
+                }
+            }
+            */
+
+
+            Ventas venta = new Ventas(nombreProducto, unidades, precioVenta, precioCoste, vendedor);
+            ventas.add(venta);
+
+
+
+        }
+
+        /*
+        public static String obtenerBenneficios (ArrayList ventas) {
+            float beneficio = 0;
+            for (int i = 0; i < ventas.size(); i++) {
+                beneficio +=  ventas.get(i).getBeneficio_venta();
+            }
+            return
         }
         */
 
 
-
-    }
+/*
 
     private static void actuacionVendedor(String vendedor, Scanner input) {
 
@@ -140,6 +197,10 @@ public class Main {
         } while (eleccion == 1 || eleccion == 2 || eleccion ==3 || eleccion ==4);
 
     }
+*/
+
 
 
 }
+
+
