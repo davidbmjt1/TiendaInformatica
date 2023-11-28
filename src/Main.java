@@ -19,15 +19,11 @@ public class Main {
                     2 - Mostrar todas las ventas
                     3 - Mostrar beneficio actual
                     4 - Producto con mayor beneficio
-                                        
-                    6 - Vendedor líder
-                    7 - Producto líder
                          """;
 
             System.out.println(menu);
 
             int opcion = input.nextInt();
-
 
             switch (opcion) {
                 case 1:
