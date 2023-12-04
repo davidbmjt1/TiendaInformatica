@@ -1,3 +1,5 @@
+// Este fichero al final no se usa para la tienda oficial de informática!!
+
 public class Ventas {
     private String nombre_producto;
     private  int cantidad_unidades;
